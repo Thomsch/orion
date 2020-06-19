@@ -63,6 +63,7 @@ disable=abstract-class-instantiated,
         wrong-import-position,
         wrong-import-order,
         C0415, F0010, R0205, R1705, R1711, R1720, W0106, W0107, W0127, W0706, # Disabled when updating pylint.
+        design, # Design-related checks are often arbitrary and force unnatural architecture or the option is skipped. These problems should be caught by code review.
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

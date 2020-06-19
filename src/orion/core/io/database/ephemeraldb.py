@@ -26,7 +26,6 @@ def _convert_keys_to_name(keys):
     return index
 
 
-# pylint: disable=too-many-public-methods
 class EphemeralDB(AbstractDB):
     """Non permanent database
 

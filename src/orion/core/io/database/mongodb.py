@@ -79,7 +79,6 @@ def mongodb_exception_wrapper(method):
     return _decorator
 
 
-# pylint: disable=too-many-public-methods
 class MongoDB(AbstractDB):
     """Wrap MongoDB with three primary methods `read`, `write`, `remove`.
 

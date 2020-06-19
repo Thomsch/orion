@@ -380,7 +380,6 @@ class OneHotEncode(Transformer):
         return super(OneHotEncode, self)._get_hashable_members() + (self.num_cats, )
 
 
-# pylint:disable=too-many-public-methods
 class TransformedDimension(object):
     """Duck-type `Dimension` to mimic its functionality,
     while transform automatically and appropriately an underlying `Dimension` object

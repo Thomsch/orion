@@ -43,7 +43,6 @@ def set_broken_trials(client):
         client.release(trial, status=status)
 
 
-# pylint: disable=too-many-public-methods
 class ExperimentClient:
     """ExperimentClient providing all functionalities for the python API
 

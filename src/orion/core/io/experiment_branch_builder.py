@@ -30,7 +30,6 @@ from orion.core.evc.adapters import CompositeAdapter
 log = logging.getLogger(__name__)
 
 
-# pylint: disable=too-many-public-methods
 class ExperimentBranchBuilder:
     """Build a new configuration for the experiment based on parent config.
 

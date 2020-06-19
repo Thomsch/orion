@@ -78,7 +78,6 @@ def find_unpickable_field(doc):
     return None, None
 
 
-# pylint: disable=too-many-public-methods
 class PickledDB(AbstractDB):
     """Pickled EphemeralDB to support permanancy and concurrency
 

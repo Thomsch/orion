@@ -12,7 +12,6 @@ from orion.algo.base import BaseAlgorithm
 from orion.core.worker.transformer import build_required_space
 
 
-# pylint: disable=too-many-public-methods
 class PrimaryAlgo(BaseAlgorithm):
     """Perform checks on points and transformations. Wrap the primary algorithm.
 

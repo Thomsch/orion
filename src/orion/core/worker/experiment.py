@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# pylint:disable=protected-access,too-many-public-methods,too-many-lines
+# pylint:disable=protected-access,too-many-lines
 """
 :mod:`orion.core.worker.experiment` -- Description of an optimization attempt
 =============================================================================
@@ -21,7 +21,6 @@ from orion.storage.base import FailedUpdate, get_storage, ReadOnlyStorageProtoco
 log = logging.getLogger(__name__)
 
 
-# pylint: disable=too-many-public-methods
 class Experiment:
     """Represents an entry in database/experiments collection.
 

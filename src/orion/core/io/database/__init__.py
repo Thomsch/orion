@@ -19,7 +19,6 @@ import logging
 from orion.core.utils import (AbstractSingletonType, SingletonFactory)
 
 
-# pylint: disable=too-many-public-methods
 class AbstractDB(object, metaclass=AbstractSingletonType):
     """Base class for database framework wrappers.
 

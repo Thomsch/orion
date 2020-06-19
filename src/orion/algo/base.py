@@ -23,7 +23,6 @@ def infer_trial_id(point):
     return hashlib.md5(str(list(point)).encode('utf-8')).hexdigest()
 
 
-# pylint: disable=too-many-public-methods
 class BaseAlgorithm(object, metaclass=ABCMeta):
     """Base class describing what an algorithm can do.
 
