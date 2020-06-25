@@ -28,53 +28,46 @@ class Experiment:
     Attributes
     ----------
     name : str
-       Unique identifier for this experiment per `user`.
+        Unique identifier for this experiment per `user`.
     id: object
-       id of the experiment in the database if experiment is configured. Value is `None`
-       if the experiment is not configured.
+        id of the experiment in the database if experiment is configured. Value is `None` if
+        the experiment is not configured.
     refers : dict or list of `Experiment` objects, after initialization is done.
-       A dictionary pointing to a past `Experiment` id, ``refers[parent_id]``, whose
-       trials we want to add in the history of completed trials we want to re-use.
-       For convenience and database effiency purpose, all experiments of a common tree shares
-       `refers[root_id]`, with the root experiment refering to itself.
-    version: int
-        Current version of this experiment.
+        A dictionary pointing to a past `Experiment` id, ``refers[parent_id]``, whose trials we want
+        to add in the history of completed trials we want to re-use. For convenience and database
+        efficiency purpose, all experiments of a common tree shares `refers[root_id]`, with the root
+        experiment refering to itself. version: int Current version of this experiment.
     metadata : dict
-       Contains managerial information about this `Experiment`.
+        Contains managerial information about this `Experiment`.
+
+        user : str
+            System user currently owning this running process, the one who invoked **Oríon**.
+        datetime : `datetime.datetime`
+            When was this particular configuration submitted to the database.
+        orion_version : str
+            Version of **Oríon** which suggested this experiment. `user`'s current
+            **Oríon** version.
+        user_script : str
+            Full absolute path to `user`'s executable.
+        user_args : list of str
+            Contains separate arguments to be passed when invoking `user_script`, possibly
+            templated for **Oríon**.
+        user_vcs : str, optional
+            User's version control system for this executable's code repository.
+        user_version : str, optional
+            Current user's repository version.
+        user_commit_hash : str, optional
+            Current `Experiment`'s commit hash for **Oríon**'s invocation.
     pool_size : int
-       How many workers can participate asynchronously in this `Experiment`.
+        How many workers can participate asynchronously in this `Experiment`.
     max_trials : int
-       How many trials must be evaluated, before considering this `Experiment` done.
-       This attribute can be updated if the rest of the experiment configuration
-       is the same. In that case, if trying to set to an already set experiment,
-       it will overwrite the previous one.
+        How many trials must be evaluated, before considering this `Experiment` done. This
+        attribute can be updated if the rest of the experiment configuration is the same.
+        In that case, if trying to set to an already set experiment, it will overwrite the
+        previous one.
     space: Space
-       Object representing the optimization space.
-    algorithms : `PrimaryAlgo` object.
-       Complete specification of the optimization and dynamical procedures taking
-       place in this `Experiment`.
-
-    Metadata
-    --------
-    user : str
-       System user currently owning this running process, the one who invoked **Oríon**.
-    datetime : `datetime.datetime`
-       When was this particular configuration submitted to the database.
-    orion_version : str
-       Version of **Oríon** which suggested this experiment. `user`'s current
-       **Oríon** version.
-    user_script : str
-       Full absolute path to `user`'s executable.
-    user_args : list of str
-       Contains separate arguments to be passed when invoking `user_script`,
-       possibly templated for **Oríon**.
-    user_vcs : str, optional
-       User's version control system for this executable's code repository.
-    user_version : str, optional
-       Current user's repository version.
-    user_commit_hash : str, optional
-       Current `Experiment`'s commit hash for **Oríon**'s invocation.
-
+        Object representing the optimization space. algorithms : `PrimaryAlgo` object. Complete
+        specification of the optimization and dynamical procedures taking place in this `Experiment`.
     """
 
     __slots__ = ('name', 'refers', 'metadata', 'pool_size', 'max_trials', 'version',
@@ -346,22 +339,19 @@ class Experiment:
         Returns
         -------
         stats : dict
-
-        Stats
-        -----
-        trials_completed : int
-           Number of completed trials
-        best_trials_id : int
-           Unique identifier of the `Trial` object in the database which achieved
-           the best known objective result.
-        best_evaluation : float
-           Evaluation score of the best trial
-        start_time : `datetime.datetime`
-           When Experiment was first dispatched and started running.
-        finish_time : `datetime.datetime`
-           When Experiment reached terminating condition and stopped running.
-        duration : `datetime.timedelta`
-           Elapsed time.
+            trials_completed : int
+                Number of completed trials
+            best_trials_id : int
+                Unique identifier of the `Trial` object in the database which achieved
+                the best known objective result.
+            best_evaluation : float
+                Evaluation score of the best trial
+            start_time : `datetime.datetime`
+                When Experiment was first dispatched and started running.
+            finish_time : `datetime.datetime`
+                When Experiment reached terminating condition and stopped running.
+            duration : `datetime.timedelta`
+                Elapsed time.
 
         """
         completed_trials = self.fetch_trials_by_status('completed')

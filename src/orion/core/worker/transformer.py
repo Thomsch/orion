@@ -33,15 +33,12 @@ def build_required_space(requirements, original_space):
        in order to be able to operate on it. In case it is a list, the infered
        transformations are going to be applied from the first item in the list to
        the last.
+            * Null requirement; use problem's parameter space as it is defined
+            * ``'real'``: transform every dimension to a `orion.algo.space.Real` one
+            * ``'integer'``: transform every dimension to a `orion.algo.space.Integer` one
+
     original_space : `orion.algo.space.Space`
        Original problem's definition of parameter space given by the user to Oríon.
-
-    Supported Requirements
-    ----------------------
-     * Null requirement; use problem's parameter space as it is defined
-     * ``'real'``: transform every dimension to a `orion.algo.space.Real` one
-     * ``'integer'``: transform every dimension to a `orion.algo.space.Integer` one
-
     """
     requirements = requirements if isinstance(requirements, list) else [requirements]
     if not requirements:

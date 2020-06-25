@@ -179,17 +179,14 @@ class BaseAlgorithm(object, metaclass=ABCMeta):
            Contains the result of an evaluation; partial information about the
            black-box function at each point in `params`.
 
-        Result
-        ------
-        objective : numeric
-           Evaluation of this problem's objective function.
-        gradient : 1D array-like, optional
-           Contains values of the derivatives of the `objective` function
-           with respect to `params`.
-        constraint : list of numeric, optional
-           List of constraints expression evaluation which must be greater
-           or equal to zero by the problem's definition.
-
+            objective : numeric
+                Evaluation of this problem's objective function.
+            gradient : 1D array-like, optional
+                Contains values of the derivatives of the `objective` function
+                with respect to `params`.
+            constraint : list of numeric, optional
+                List of constraints expression evaluation which must be greater
+                or equal to zero by the problem's definition.
         """
         for point, result in zip(points, results):
             point_id = infer_trial_id(point)

@@ -324,23 +324,20 @@ class Real(Dimension):
        See Parameters of `Dimension.__init__`.
     args : list
     kwargs : dict
-       See Parameters of `Dimension.__init__` for general.
+        See Parameters of `Dimension.__init__` for general.
 
-    Real kwargs (extra)
-    -------------------
-    low : float
-       Lower bound (inclusive), optional; default ``-numpy.inf``.
-    high : float:
-       Upper bound (inclusive), optional; default ``numpy.inf``.
-       The upper bound must be inclusive because of rounding errors
-       during optimization which may cause values to round exactly
-       to the upper bound.
-    precision : int
-        Precision, optional; default ``4``.
-    shape : tuple
-       Defines how many dimensions are packed in this `Dimension`.
-       Describes the shape of the corresponding tensor.
-
+        low : float
+            Lower bound (inclusive), optional; default ``-numpy.inf``.
+        high : float
+            Upper bound (inclusive), optional; default ``numpy.inf``.
+            The upper bound must be inclusive because of rounding errors
+            during optimization which may cause values to round exactly
+            to the upper bound.
+        precision : int
+            Precision, optional; default ``4``.
+        shape : tuple
+            Defines how many dimensions are packed in this `Dimension`.
+            Describes the shape of the corresponding tensor.
     """
 
     def __init__(self, name, prior, *args, **kwargs):
@@ -487,18 +484,15 @@ class Integer(Real, _Discrete):
     kwargs : dict
        See Parameters of `Dimension.__init__` for general.
 
-    Real kwargs (extra)
-    -------------------
-    low : float
-       Lower bound (inclusive), optional; default ``-numpy.inf``.
-    high : float:
-       Upper bound (inclusive), optional; default ``numpy.inf``.
-    precision : int
-        Precision, optional; default ``4``.
-    shape : tuple
-       Defines how many dimensions are packed in this `Dimension`.
-       Describes the shape of the corresponding tensor.
-
+        low : float
+            Lower bound (inclusive), optional; default ``-numpy.inf``.
+        high : float:
+            Upper bound (inclusive), optional; default ``numpy.inf``.
+        precision : int
+            Precision, optional; default ``4``.
+        shape : tuple
+            Defines how many dimensions are packed in this `Dimension`.
+            Describes the shape of the corresponding tensor.
     """
 
     def __contains__(self, point):
