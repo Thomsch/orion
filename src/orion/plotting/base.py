@@ -44,12 +44,38 @@ def regret(experiment, order_by='suggested', verbose_hover=True, **kwargs):
     ------
     ValueError
         If no experiment is provided.
-
     """
     return backend.regret(experiment, order_by, verbose_hover, **kwargs)
 
 
-PLOT_METHODS = {'regret': regret}
+def status(experiment, **kwargs):
+    """
+    Make a bar plot to visualize the status of the trials.
+
+    The x-axis contain the trials statuses and the y-axis the number of trials for the each status.
+
+    Parameters
+    ----------
+    experiment: ExperimentClient, Experiment or ExperimentView
+        The orion object containing the experiment data
+
+    kwargs: dict
+        All other plotting keyword arguments to be passed to
+        :meth:`plotly.express.line`.
+
+    Returns
+    -------
+    plotly.graph_objects.Figure
+
+    Raises
+    ------
+    ValueError
+        If no experiment is provided.
+    """
+    return backend.status(experiment, **kwargs)
+
+
+PLOT_METHODS = {'regret': regret, 'status': status}
 
 
 class PlotAccessor:
@@ -82,6 +108,7 @@ class PlotAccessor:
             The kind of plot to produce:
 
             - 'regret' : Regret plot (default)
+            - 'status' : Bar plot of trials' statuses
         """
         kind = kwargs.pop('kind', 'regret')
 
@@ -94,3 +121,8 @@ class PlotAccessor:
         """Make a plot to visualize the performance of the hyper-optimization process."""
         __doc__ = regret.__doc__
         return self(kind="regret", **kwargs)
+
+    def status(self, **kwargs):
+        """Make a plot to visualize the status of trials"""
+        __doc__ = status.__doc__
+        return self(kind="status", **kwargs)

@@ -36,10 +36,15 @@ trial_config = {
 
 
 def check_regret_plot(plot):
-    """Verifies that existence of the regret plot"""
+    """Verifies the existence of the regret plot"""
     assert plot
     assert "regret" in plot.layout.title.text.lower()
     assert 2 == len(plot.data)
+
+
+def check_status_plot(plot):
+    """Verifies the existence of the status plot"""
+    assert plot
 
 
 def test_init_require_experiment():
@@ -85,3 +90,21 @@ def test_call_to_regret():
         plot = pa.regret()
 
         check_regret_plot(plot)
+
+
+def test_status_kind():
+    """Tests instance calls to ``PlotAccessor.``"""
+    with create_experiment(config, trial_config, ['completed']) as (_, _, experiment):
+        pa = PlotAccessor(experiment)
+        plot = pa(kind='status')
+
+        check_status_plot(plot)
+
+
+def test_call_to_status():
+    """Tests instance calls to `PlotAccessor.status()`"""
+    with create_experiment(config, trial_config, ['completed']) as (_, _, experiment):
+        pa = PlotAccessor(experiment)
+        plot = pa.status()
+
+        check_status_plot(plot)

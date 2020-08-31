@@ -10,6 +10,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 import orion.analysis.regret
+from orion.core.worker.trial import Trial
 
 
 def regret(experiment, order_by, verbose_hover, **kwargs):
@@ -56,6 +57,16 @@ def regret(experiment, order_by, verbose_hover, **kwargs):
                       xaxis_title=f"Trials ordered by {order_by} time",
                       yaxis_title=y_axis_label)
 
+    return fig
+
+
+def status(experiment, **kwargs):
+    """Plotly implementation of `orion.plotting.status`"""
+    if not experiment:
+        raise ValueError("Parameter 'experiment' is None")
+
+    fig = go.Figure()
+    # fig.add_bar(x=statuses, y=[20, 14, 23])
     return fig
 
 
