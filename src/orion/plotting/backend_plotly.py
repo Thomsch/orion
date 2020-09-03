@@ -65,8 +65,15 @@ def status(experiment, **kwargs):
     if not experiment:
         raise ValueError("Parameter 'experiment' is None")
 
+    statuses = list(Trial.allowed_stati)
+    statuses.sort()
+
+    data = [(trial.id, trial.status) for trial in experiment.fetch_trials()]
+    df = pd.DataFrame(data, columns=['id', 'status'])
+    df = df.status.value_counts()
+
     fig = go.Figure()
-    # fig.add_bar(x=statuses, y=[20, 14, 23])
+    fig.add_bar(x=statuses, y=[20, 14, 23])
     return fig
 
 
